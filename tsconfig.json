@@ -14,7 +14,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@shared/*": ["./src/app/shared/*"]
+			"@shared/*": ["./src/app/shared/*"],
+			"@store/*": ["./src/app/store/*"]
 		},
 		"useDefineForClassFields": false,
 		"esModuleInterop": true,
