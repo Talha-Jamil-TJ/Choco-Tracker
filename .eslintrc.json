@@ -29,7 +29,7 @@
 					"error",
 					{
 						"type": "element",
-						"prefix": "choco-tracker",
+						"prefix": "app",
 						"style": "kebab-case"
 					}
 				]
