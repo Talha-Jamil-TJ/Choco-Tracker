@@ -1,0 +1,32 @@
+<nz-table #table [nzData]="data()" [nzLoading]="isLoading()">
+	<thead>
+		<tr>
+			<th nzAlign="center">Name</th>
+			<th nzAlign="center">Manufacturer</th>
+			<th nzAlign="center">Lowest price per 100g</th>
+			<th nzAlign="center">Average price per 100g</th>
+			<th nzAlign="center">Cheapest shop</th>
+			<th nzAlign="center">Details</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (data of table.data; track data.id) {
+		<tr>
+			<td nzAlign="center">{{ data.name }}</td>
+			<td nzAlign="center">{{ data.brand }}</td>
+			<td nzAlign="center">{{ data.lowestPrice100g?.pricePer100g }}</td>
+			<td nzAlign="center">{{ data.avgPrice100g }}</td>
+			<td nzAlign="center">
+				@if(data.lowestPrice100g; as price) {
+				<a [href]="price.link" target="_blank" nz-button nzType="text">
+					<span nz-icon nzType="export" nzTheme="outline"></span>{{ price.shop }}</a
+				>
+				}
+			</td>
+			<td nzAlign="center">
+				<button nz-button nzType="dashed">Details</button>
+			</td>
+		</tr>
+		}
+	</tbody>
+</nz-table>
