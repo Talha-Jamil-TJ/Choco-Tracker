@@ -5,8 +5,12 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
-import { AppstoreOutline, BarChartOutline, FileTextOutline } from '@ant-design/icons-angular/icons';
-import { NgxsModule } from '@ngxs/store';
+import {
+	BarChartOutline,
+	BorderlessTableOutline,
+	ExportOutline,
+	FileTextOutline,
+} from '@ant-design/icons-angular/icons';
 import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { appRoutes } from './app.routes';
@@ -20,7 +24,8 @@ export const appConfig: ApplicationConfig = {
 		importProvidersFrom(FormsModule),
 		importProvidersFrom(HttpClientModule),
 		provideAnimations(),
-		importProvidersFrom(NzIconModule.forRoot([BarChartOutline, AppstoreOutline, FileTextOutline])),
-		importProvidersFrom(NgxsModule.forRoot([])),
+		importProvidersFrom(
+			NzIconModule.forRoot([BarChartOutline, BorderlessTableOutline, FileTextOutline, ExportOutline]),
+		),
 	],
 };

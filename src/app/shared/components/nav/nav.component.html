@@ -1,11 +1,12 @@
 <nz-header class="header">
-	<div><i nz-icon nzType="bar-chart" nzTheme="outline"></i>&nbsp;<span>Choco Tracker</span></div>
-	<ul nz-menu nzTheme="dark" nzMode="horizontal">
-		<li nz-menu-item [nzMatchRouter]="true" routerLink="/">
-			<i nz-icon nzType="appstore" nzTheme="outline"></i> <span>Overview</span>
-		</li>
-		<li nz-menu-item [nzMatchRouter]="true">
-			<i nz-icon nzType="file-text" nzTheme="outline"></i> <span>Detail</span>
-		</li>
-	</ul>
+	<div><i nz-icon nzTheme="outline" nzType="bar-chart"></i>&nbsp;<span>Choco Tracker</span></div>
 </nz-header>
+
+<section class="breadcrumbs-container">
+	<nz-breadcrumb>
+		<nz-breadcrumb-item>
+			<a routerLink="/"> <i nz-icon nzTheme="outline" nzType="borderless-table"></i>&nbsp;Overview</a>
+		</nz-breadcrumb-item>
+		<!--		<nz-breadcrumb-item><i nz-icon nzTheme="outline" nzType="file-text"></i>&nbsp;Home</nz-breadcrumb-item>-->
+	</nz-breadcrumb>
+</section>
