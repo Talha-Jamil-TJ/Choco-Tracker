@@ -11,6 +11,8 @@ import {
 	ExportOutline,
 	FileTextOutline,
 } from '@ant-design/icons-angular/icons';
+import { NgxsModule } from '@ngxs/store';
+import { ProductState } from '@store/product/product.state';
 import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { appRoutes } from './app.routes';
@@ -27,5 +29,6 @@ export const appConfig: ApplicationConfig = {
 		importProvidersFrom(
 			NzIconModule.forRoot([BarChartOutline, BorderlessTableOutline, FileTextOutline, ExportOutline]),
 		),
+		importProvidersFrom(NgxsModule.forRoot([ProductState])),
 	],
 };
