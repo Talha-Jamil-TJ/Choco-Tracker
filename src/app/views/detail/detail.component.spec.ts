@@ -1,19 +1,19 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { ProductListState } from '@store/product-list/product-list.state';
-import { OverviewComponent } from './overview.component';
+import { ProductDetailState } from '@store/product-detail/product-detail.state';
+import { DetailComponent } from './detail.component';
 
-describe('OverviewComponent', () => {
-	let component: OverviewComponent;
-	let fixture: ComponentFixture<OverviewComponent>;
+describe('DetailComponent', () => {
+	let component: DetailComponent;
+	let fixture: ComponentFixture<DetailComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [OverviewComponent, NgxsModule.forRoot([ProductListState]), HttpClientTestingModule],
+			imports: [DetailComponent, NgxsModule.forRoot([ProductDetailState]), HttpClientTestingModule],
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(OverviewComponent);
+		fixture = TestBed.createComponent(DetailComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -7,6 +7,8 @@
 		<nz-breadcrumb-item>
 			<a routerLink="/"> <i nz-icon nzTheme="outline" nzType="borderless-table"></i>&nbsp;Overview</a>
 		</nz-breadcrumb-item>
-		<!--		<nz-breadcrumb-item><i nz-icon nzTheme="outline" nzType="file-text"></i>&nbsp;Home</nz-breadcrumb-item>-->
+		@if (productId()) {
+		<nz-breadcrumb-item><i nz-icon nzTheme="outline" nzType="file-text"></i>&nbsp;{{ productId() }}</nz-breadcrumb-item>
+		}
 	</nz-breadcrumb>
 </section>

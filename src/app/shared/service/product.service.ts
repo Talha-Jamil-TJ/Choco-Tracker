@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Unit } from '@shared/enum/unit';
-import { Price } from '@shared/interface/price';
-import { PriceWithPer100g } from '@shared/interface/price-with-per-100g';
-import { ProductResponse } from '@shared/interface/productResponse';
-import { map, Observable } from 'rxjs';
+import { delay, map, Observable, of } from 'rxjs';
+import { Unit } from '../enum/unit';
+import { Price } from '../interface/price';
+import { PriceWithPer100g } from '../interface/price-with-per-100g';
+import { Product } from '../interface/product';
+import { ProductResponse } from '../interface/productResponse';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -25,6 +26,25 @@ export class ProductService {
 				return { ...res, data };
 			}),
 		);
+	}
+
+	getProduct(id: string): Observable<Product> {
+		return this._http.get<ProductResponse>(this.url).pipe(
+			map(({ data }) => {
+				const product = data.find(({ id: productId }) => productId === id) as Product;
+
+				return {
+					...product,
+					lowestPrice100g: this.getLowestPricePer100Grams(product?.prices ?? []),
+					avgPrice100g: this._calculateAveragePricePer100Grams(product?.prices ?? []),
+				};
+			}),
+		);
+	}
+
+	updateProduct(product: Product) {
+		// implementation pending a POST API
+		return of(product).pipe(delay(1000));
 	}
 
 	getLowestPricePer100Grams(prices: Price[]): PriceWithPer100g | null {
