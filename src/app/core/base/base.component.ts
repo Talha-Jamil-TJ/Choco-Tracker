@@ -10,5 +10,5 @@ export abstract class BaseComponent implements OnDestroy {
 		this._destroy$.complete();
 	}
 
-	protected takeUntilDestroy$ = <T>() => takeUntil<T>(this._destroy$);
+	protected takeUntilDestroy = <T>() => takeUntil<T>(this._destroy$);
 }
