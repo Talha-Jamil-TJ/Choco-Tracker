@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzHeaderComponent } from 'ng-zorro-antd/layout';
+import { BaseComponent } from '../../base/base.component';
 
 @Component({
 	selector: 'app-nav',
@@ -12,4 +13,4 @@ import { NzHeaderComponent } from 'ng-zorro-antd/layout';
 	templateUrl: './nav.component.html',
 	styleUrl: './nav.component.scss',
 })
-export class NavComponent {}
+export class NavComponent extends BaseComponent {}
