@@ -1,4 +1,6 @@
+import { input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Price } from '@shared/interface/price';
 import { PriceComponent } from './price.component';
 
 describe('PriceComponent', () => {
@@ -12,6 +14,7 @@ describe('PriceComponent', () => {
 
 		fixture = TestBed.createComponent(PriceComponent);
 		component = fixture.componentInstance;
+		component.prices = input([] as Price[]);
 		fixture.detectChanges();
 	});
 

@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { ProductState } from '@store/product/product.state';
+import { ProductListState } from '@store/product-list/product-list.state';
 import { OverviewComponent } from './overview.component';
 
 describe('OverviewComponent', () => {
@@ -10,7 +10,7 @@ describe('OverviewComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [OverviewComponent, NgxsModule.forRoot([ProductState]), HttpClientTestingModule],
+			imports: [OverviewComponent, NgxsModule.forRoot([ProductListState]), HttpClientTestingModule],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(OverviewComponent);

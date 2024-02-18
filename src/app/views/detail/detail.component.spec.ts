@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxsModule } from '@ngxs/store';
+import { ProductDetailState } from '@store/product-detail/product-detail.state';
 import { DetailComponent } from './detail.component';
 
 describe('DetailComponent', () => {
@@ -7,7 +10,7 @@ describe('DetailComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [DetailComponent],
+			imports: [DetailComponent, NgxsModule.forRoot([ProductDetailState]), HttpClientTestingModule],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DetailComponent);
