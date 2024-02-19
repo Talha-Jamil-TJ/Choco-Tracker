@@ -17,13 +17,7 @@ export class ProductService {
 	getProducts(): Observable<ProductResponse> {
 		return this._http.get<ProductResponse>(this.url).pipe(
 			map(({ data, ...res }) => {
-				data = data.map((product) => ({
-					...product,
-					lowestPrice100g: this.getLowestPricePer100Grams(product.prices),
-					avgPrice100g: this._calculateAveragePricePer100Grams(product.prices),
-				}));
-
-				return { ...res, data };
+				return { ...res, data: data.map((product) => this._mapProduct(product)) };
 			}),
 		);
 	}
@@ -33,11 +27,7 @@ export class ProductService {
 			map(({ data }) => {
 				const product = data.find(({ id: productId }) => productId === id) as Product;
 
-				return {
-					...product,
-					lowestPrice100g: this.getLowestPricePer100Grams(product?.prices ?? []),
-					avgPrice100g: this._calculateAveragePricePer100Grams(product?.prices ?? []),
-				};
+				return this._mapProduct(product);
 			}),
 		);
 	}
@@ -47,7 +37,15 @@ export class ProductService {
 		return of(product).pipe(delay(1000));
 	}
 
-	getLowestPricePer100Grams(prices: Price[]): PriceWithPer100g | null {
+	private _mapProduct(product: Product) {
+		return {
+			...product,
+			lowestPrice100g: this._getLowestPricePer100Grams(product.prices),
+			avgPrice100g: this._calculateAveragePricePer100Grams(product.prices),
+		};
+	}
+
+	private _getLowestPricePer100Grams(prices: Price[]): PriceWithPer100g | null {
 		if (!prices.length) return null;
 
 		return prices.reduce((lowestPrice, currPrice) => {
