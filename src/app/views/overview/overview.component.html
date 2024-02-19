@@ -1,4 +1,10 @@
-<nz-table #table [nzData]="data()" [nzLoading]="isLoading()" [nzShowPagination]="false">
+<nz-table
+	#table
+	[attr.data-test-id]="OverviewTestId.Table"
+	[nzData]="data()"
+	[nzLoading]="isLoading()"
+	[nzShowPagination]="false"
+>
 	<thead>
 		<tr>
 			<th nzAlign="center">Name</th>
@@ -10,20 +16,22 @@
 		</tr>
 	</thead>
 	<tbody>
-		@for (data of table.data; track data.id) {
-		<tr>
-			<td nzAlign="center">{{ data.name }}</td>
-			<td nzAlign="center">{{ data.brand }}</td>
-			<td nzAlign="center">{{ data.lowestPrice100g?.pricePer100g }}</td>
-			<td nzAlign="center">{{ data.avgPrice100g }}</td>
-			<td nzAlign="center">
+		@for (data of table.data; track data.id; let i = $index) {
+		<tr [attr.data-test-id]="OverviewTestId.TableRow">
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.NameRow + i">{{ data.name }}</td>
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.BrandRow + i">{{ data.brand }}</td>
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.LowestPricePer100gRow + i">
+				{{ data.lowestPrice100g?.pricePer100g }}
+			</td>
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.AveragePricePer100gRow + i">{{ data.avgPrice100g }}</td>
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.CheapestShopRow + i">
 				@if(data.lowestPrice100g; as price) {
 				<a [href]="price.link" target="_blank" nz-button nzType="text">
 					<span nz-icon nzType="export" nzTheme="outline"></span>{{ price.shop }}</a
 				>
 				}
 			</td>
-			<td nzAlign="center">
+			<td nzAlign="center" [attr.data-test-id]="OverviewTestId.DetailsRow + i">
 				<button nz-button nzType="dashed" [routerLink]="[data.id]">Details</button>
 			</td>
 		</tr>

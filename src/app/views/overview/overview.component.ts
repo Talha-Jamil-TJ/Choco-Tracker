@@ -12,6 +12,7 @@ import { NzDividerComponent } from 'ng-zorro-antd/divider';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { map } from 'rxjs';
+import { OverviewTestId } from './overview-test-id';
 
 @Component({
 	selector: 'app-overview',
@@ -23,6 +24,8 @@ import { map } from 'rxjs';
 export class OverviewComponent implements OnInit {
 	data: Signal<Product[]>;
 	isLoading: Signal<boolean>;
+
+	OverviewTestId = OverviewTestId;
 
 	constructor(private readonly _store: Store) {
 		this.data = toSignal(_store.select(ProductListState.products), {
