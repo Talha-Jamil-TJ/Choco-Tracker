@@ -70,25 +70,17 @@
 	@if(product.nutrition; as nutrition) {
 	<nz-descriptions-item nzTitle="Nutrition" [nzSpan]="3">
 		<div class="nutrition-container">
-			@if(nutrition.carbohydrates; as carbohydrates) {
 			<app-detail-chart
-				title="Carbohydrate"
-				[chartLabels]="['Sugar', 'Other']"
-				[chartDataList]="[carbohydrates.sugar, carbohydrates.total - carbohydrates.sugar]"
+				[chartLabels]="['Sugar Carbohydrates', 'Other Carbohydrates', 'Saturated Fat', 'Other Fat', 'Protein', 'Salt']"
+				[chartDataList]="[
+					nutrition.carbohydrates.sugar,
+					nutrition.carbohydrates.total - nutrition.carbohydrates.sugar,
+					nutrition.fat.saturated,
+					nutrition.fat.total - nutrition.fat.saturated,
+					nutrition.protein,
+					nutrition.salt
+				]"
 			></app-detail-chart>
-			} @if(nutrition.fat; as fat) {
-			<app-detail-chart
-				title="Fat"
-				[chartLabels]="['Saturated', 'Other']"
-				[chartDataList]="[fat.saturated, fat.total - fat.saturated]"
-			></app-detail-chart>
-			} @if(nutrition.protein && nutrition.salt) {
-			<app-detail-chart
-				title="Other"
-				[chartLabels]="['Protein', 'Salt']"
-				[chartDataList]="[nutrition.protein, nutrition.salt]"
-			></app-detail-chart>
-			}
 		</div>
 	</nz-descriptions-item>
 	}

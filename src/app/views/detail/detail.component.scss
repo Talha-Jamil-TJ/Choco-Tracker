@@ -9,9 +9,10 @@
 
 .nutrition-container {
 	display: flex;
-	gap: 20px;
+	justify-content: center;
 
 	app-detail-chart {
 		flex: 1;
+		max-width: 45em;
 	}
 }
