@@ -12,7 +12,6 @@ import { NgChartsModule } from 'ng2-charts';
 	styleUrl: './detail-chart.component.scss',
 })
 export class DetailChartComponent implements OnInit {
-	title = input.required<string>();
 	chartLabels = input.required<string[]>();
 	chartDataList = input.required<number[]>();
 
