@@ -55,7 +55,9 @@
 	@if(product.avgPrice100g) {
 	<nz-descriptions-item nzTitle="Average price per 100g" [nzSpan]="1">{{ product.avgPrice100g }}</nz-descriptions-item>
 	} @if(product.lowestPrice100g; as lowestPrice) {
-	<nz-descriptions-item nzTitle="Lowest price per 100g" [nzSpan]="1">{{ lowestPrice.price }}</nz-descriptions-item>
+	<nz-descriptions-item nzTitle="Lowest price per 100g" [nzSpan]="1">{{
+		lowestPrice.pricePer100g
+	}}</nz-descriptions-item>
 	<nz-descriptions-item nzTitle="Cheapest shop" [nzSpan]="1">
 		<a [href]="lowestPrice.link" target="_blank" nz-button nzType="text">
 			<span nz-icon nzType="export" nzTheme="outline"></span>{{ lowestPrice.shop }}
