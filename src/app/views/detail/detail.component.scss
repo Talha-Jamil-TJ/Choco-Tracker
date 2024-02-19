@@ -6,3 +6,12 @@
 .ant-input-disabled {
 	color: rgba(255, 255, 255, 0.85);
 }
+
+.nutrition-container {
+	display: flex;
+	gap: 20px;
+
+	app-detail-chart {
+		flex: 1;
+	}
+}

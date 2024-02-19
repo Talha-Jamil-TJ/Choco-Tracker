@@ -11,6 +11,7 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { DetailChartComponent } from './children/detail-chart/detail-chart.component';
 import { PriceComponent } from './children/price/price.component';
 
 interface DetailComponentForm {
@@ -29,6 +30,7 @@ interface DetailComponentForm {
 		NzIconDirective,
 		ReactiveFormsModule,
 		NzInputModule,
+		DetailChartComponent,
 	],
 	templateUrl: './detail.component.html',
 	styleUrl: './detail.component.scss',

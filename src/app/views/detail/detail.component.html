@@ -65,5 +65,30 @@
 	<nz-descriptions-item nzTitle="Prices" [nzSpan]="3">
 		<app-price [prices]="product.prices"></app-price>
 	</nz-descriptions-item>
+	@if(product.nutrition; as nutrition) {
+	<nz-descriptions-item nzTitle="Nutrition" [nzSpan]="3">
+		<div class="nutrition-container">
+			@if(nutrition.carbohydrates; as carbohydrates) {
+			<app-detail-chart
+				title="Carbohydrate"
+				[chartLabels]="['Sugar', 'Other']"
+				[chartDataList]="[carbohydrates.sugar, carbohydrates.total - carbohydrates.sugar]"
+			></app-detail-chart>
+			} @if(nutrition.fat; as fat) {
+			<app-detail-chart
+				title="Fat"
+				[chartLabels]="['Saturated', 'Other']"
+				[chartDataList]="[fat.saturated, fat.total - fat.saturated]"
+			></app-detail-chart>
+			} @if(nutrition.protein && nutrition.salt) {
+			<app-detail-chart
+				title="Other"
+				[chartLabels]="['Protein', 'Salt']"
+				[chartDataList]="[nutrition.protein, nutrition.salt]"
+			></app-detail-chart>
+			}
+		</div>
+	</nz-descriptions-item>
+	}
 </nz-descriptions>
 }
