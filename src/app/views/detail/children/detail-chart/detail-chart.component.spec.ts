@@ -1,5 +1,6 @@
 import { input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { setResizeObserver } from '@shared/test/resize-observer.helper';
 import { DetailChartComponent } from './detail-chart.component';
 
 describe('DetailChartComponent', () => {
@@ -11,10 +12,11 @@ describe('DetailChartComponent', () => {
 			imports: [DetailChartComponent],
 		}).compileComponents();
 
+		setResizeObserver();
+
 		fixture = TestBed.createComponent(DetailChartComponent);
 		component = fixture.componentInstance;
 
-		component.title = input('Mock Title');
 		component.chartLabels = input(['Label 1', 'Label 2']);
 		component.chartDataList = input([1, 2]);
 
